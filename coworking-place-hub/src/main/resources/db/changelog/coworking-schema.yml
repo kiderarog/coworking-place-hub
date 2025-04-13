@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: user
+      changes:
+        - createTable:
+            tableName: coworking
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: total_spots
+                  type: integer
+              - column:
+                  name: available_spots
+                  type: integer
+              - column:
+                  name: daily_price
+                  type: integer
+              - column:
+                  name: monthly_price
+                  type: integer
+              - column:
+                  name: booked_spots
+                  type: integer
+              - column:
+                  name: is_freeze
+                  type: boolean
+              - column:
+                  name: name
+                  type: character varying(255)
+              - column:
+                  name: location
+                  type: character varying(255)

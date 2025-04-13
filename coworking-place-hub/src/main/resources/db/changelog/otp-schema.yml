@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: user
+      changes:
+        - createTable:
+            tableName: otp
+            columns:
+              - column:
+                  name: otp_code
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: exp_at
+                  type: timestamp without time zone
+              - column:
+                  name: issued_at
+                  type: timestamp without time zone
+              - column:
+                  name: email
+                  type: character varying(255)
+
+  - changeSet:
+      id: 5
+      author: user
+      changes:
+        - addColumn:
+            tableName: otp
+            columns:
+              - column:
+                  name: country
+                  type: character varying(255)
+                  defaultValue: 'Russia'

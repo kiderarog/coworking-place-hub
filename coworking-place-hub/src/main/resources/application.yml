@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: coworking-place-hub
+  config:
+    import:
+      - "classpath:database.properties"
+      - "classpath:secrets.yml"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/client
+
+  kafka:
+    consumer:
+      bootstrap-servers:
+        - localhost:9092
+        - localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: password-restore-group
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+    producer:
+      bootstrap-servers: localhost:9092,localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+cron:
+  expression: "0 1 0 * * *"
+
+jwt:
+  secret-key: "bm1aqA3a+cbFbK2eyGZLhQtd9svGAuEgJKmuaeQOJiSG33Mf/Wysvem8uQCk/o84g7aeBkggz7UxoeDXcl+NSA=="

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/spot-schema.yml
+  - include:
+      file: db/changelog/coworking-schema.yml
+  - include:
+      file: db/changelog/otp-schema.yml

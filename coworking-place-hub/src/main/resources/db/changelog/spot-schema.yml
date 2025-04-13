@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: user
+      changes:
+        - createTable:
+            tableName: spot
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: client_id
+                  type: uuid
+              - column:
+                  name: start_date
+                  type: timestamp without time zone
+              - column:
+                  name: end_date
+                  type: timestamp without time zone
+              - column:
+                  name: active_booking
+                  type: boolean
+              - column:
+                  name: coworking_id
+                  type: uuid
